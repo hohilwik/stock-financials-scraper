@@ -83,8 +83,6 @@ def get_Data(aurl,aname,fname):
 			char = "_"
 		acc = acc+char
 
-	ckdir(company_dir+'/'+acc)
-
 	try:
 		soup	= get_soup(aurl)
 		og_table	= soup.find('div',{'class':'table-responsive financial-table'})
@@ -94,6 +92,8 @@ def get_Data(aurl,aname,fname):
 	if(og_table is None):
 		print("Error:Table Class")
 		return
+	
+	ckdir(company_dir+'/'+acc)
 
 	table	= og_table.find('table',{'class':'mctable1'})
 
