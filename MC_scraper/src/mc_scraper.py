@@ -79,11 +79,9 @@ def get_Data(aurl,aname,fname):
 
 	acc = ""
 	for char in aname:
-		if(char==' '):
+		if(char==' ' or char=='.'):
 			char = "_"
 		acc = acc+char
-
-	ckdir(company_dir+'/'+acc)
 
 	try:
 		soup	= get_soup(aurl)
@@ -125,6 +123,8 @@ def get_Data(aurl,aname,fname):
 
 		final_rows = final_rows+'\n' #'],'
 		#print(row)
+
+	ckdir(company_dir+'/'+acc)
 
 	with open(company_dir+'/'+acc+'/'+fname,'w') as outfile:
 		outfile.write(final_rows)
