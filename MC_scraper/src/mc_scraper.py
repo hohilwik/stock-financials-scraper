@@ -92,6 +92,8 @@ def get_Data(aurl,aname,fname):
 	if(og_table is None):
 		print("Error:Table Class")
 		return
+	
+	ckdir(company_dir+'/'+acc)
 
 	table	= og_table.find('table',{'class':'mctable1'})
 
