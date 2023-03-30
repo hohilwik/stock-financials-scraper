@@ -92,8 +92,6 @@ def get_Data(aurl,aname,fname):
 	if(og_table is None):
 		print("Error:Table Class")
 		return
-	
-	ckdir(company_dir+'/'+acc)
 
 	table	= og_table.find('table',{'class':'mctable1'})
 
@@ -303,6 +301,13 @@ def get_alpha_quotes(aurl):
 			p = Process(target=get_Company_Data(company['href'],company.get_text()) )
 			p.start()
 			proc.append(p)
+			p_iter = p_iter+1
+
+			if(p_iter == p_limit):
+				for p in proc:
+					p.join()
+				p_iter = 0
+				proc = []
 	
 	for p in proc:
 		p.join()
@@ -316,7 +321,7 @@ def get_all_quotes_data(aurl):
 
 	links= list.find_all('a')
 
-	for link in links[1:]:
+	for link in links[2:]:
 		# print(link.get_text()+" : "+baseurl+link['href'])
 		print("Accessing list for : "+link.get_text())
 		get_alpha_quotes(baseurl+link['href'])
