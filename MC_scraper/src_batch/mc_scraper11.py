@@ -42,7 +42,7 @@ def get_response(aurl):
 	while True:
 		try: 
 			# Waiting 60 seconds to recieve a responser object
-			with time_limit(30):
+			with time_limit(120):
 				content 				= requests.get(aurl,headers=hdr).content
 			break
 		except Exception:
@@ -321,7 +321,7 @@ def get_all_quotes_data(aurl):
 
 	links= list.find_all('a')
 
-	for link in links[2:]:
+	for link in links[11:12]:
 		# print(link.get_text()+" : "+baseurl+link['href'])
 		print("Accessing list for : "+link.get_text())
 		get_alpha_quotes(baseurl+link['href'])

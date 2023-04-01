@@ -1,0 +1,26 @@
+python3 mc_scraper1.py &
+python3 mc_scraper2.py &
+python3 mc_scraper3.py &
+python3 mc_scraper4.py &
+python3 mc_scraper5.py &
+python3 mc_scraper6.py &
+python3 mc_scraper7.py &
+python3 mc_scraper8.py &
+python3 mc_scraper9.py &
+python3 mc_scraper10.py &
+python3 mc_scraper11.py &
+python3 mc_scraper12.py &
+python3 mc_scraper13.py &
+python3 mc_scraper14.py &
+python3 mc_scraper15.py &
+python3 mc_scraper16.py &
+python3 mc_scraper17.py &
+python3 mc_scraper18.py &
+python3 mc_scraper19.py &
+python3 mc_scraper20.py &
+python3 mc_scraper21.py &
+python3 mc_scraper22.py &
+python3 mc_scraper23.py &
+python3 mc_scraper24.py &
+python3 mc_scraper25.py &
+wait
