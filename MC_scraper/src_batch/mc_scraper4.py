@@ -42,7 +42,7 @@ def get_response(aurl):
 	while True:
 		try: 
 			# Waiting 60 seconds to recieve a responser object
-			with time_limit(120):
+			with time_limit(60):
 				content 				= requests.get(aurl,headers=hdr).content
 			break
 		except Exception:

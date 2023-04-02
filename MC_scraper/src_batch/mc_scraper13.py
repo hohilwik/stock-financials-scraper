@@ -42,7 +42,7 @@ def get_response(aurl):
 	while True:
 		try: 
 			# Waiting 60 seconds to recieve a responser object
-			with time_limit(120):
+			with time_limit(60):
 				content 				= requests.get(aurl,headers=hdr).content
 			break
 		except Exception:
@@ -296,6 +296,13 @@ def get_alpha_quotes(aurl):
 	proc = []
 
 	for company in companies[0:]:
+		global iter_comp
+		global ind_comp
+		iter_comp = iter_comp+1
+        
+		if( (iter_comp%4)!=ind_comp ):
+			continue
+
 		if company.get_text() != '':
 			print(company.get_text()+" : "+company['href'])
 			p = Process(target=get_Company_Data(company['href'],company.get_text()) )
@@ -320,10 +327,12 @@ def get_all_quotes_data(aurl):
 	list = soup.find('div',{'class':'MT2 PA10 brdb4px alph_pagn'})
 
 	links= list.find_all('a')
+	global iter_comp
 
 	for link in links[13:14]:
 		# print(link.get_text()+" : "+baseurl+link['href'])
 		print("Accessing list for : "+link.get_text())
+		iter_comp = 0
 		get_alpha_quotes(baseurl+link['href'])
 
 if __name__ == '__main__':
@@ -331,6 +340,7 @@ if __name__ == '__main__':
 	quote_list_url 	= 'http://www.moneycontrol.com/india/stockpricequote'
 
 	url 			= quote_list_url
+    
 
 	print("Initializing")
 	ckdir(base_dir)
@@ -346,4 +356,10 @@ if __name__ == '__main__':
 	# print(company_sector)
 
 	# get_sector_data(url)
+	global iter_link
+	global iter_comp
+	global ind_comp
+	iter_link = 0
+	iter_comp = 0
+	ind_comp = 1
 	get_all_quotes_data(url)
